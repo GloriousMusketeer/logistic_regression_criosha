@@ -30,8 +30,7 @@ class logisticFunction:
         umbral = 0.5
         self.fit(x_t, weight, y_t, lr, iterations)
         pred = self.predict(x, umbral, intercept, weight)
-        print(pred)
-        # print((pred == y_t).mean())
+        print((pred == y_t).mean())
 
     def fit(
         self,
