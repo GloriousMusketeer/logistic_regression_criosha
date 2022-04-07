@@ -5,7 +5,7 @@ from numpy import exp
 
 
 class Sigmoid:
-    def sigmoid_function(self, x: list[float], ) -> list[float]:
+    def sigmoid_function(self, x: list[float]) -> list[float]:
         if x >= 0:
             sig = 1 / (1 + exp(-x))
         else:
