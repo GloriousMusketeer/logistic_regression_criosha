@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from numpy import dot
+from numpy import sum
 
 
 class gradientDescent:
@@ -10,5 +11,6 @@ class gradientDescent:
         h: list[float],
         y: list[int],
     ) -> list[float]:
-        gd = dot(x.T, (h - y)) / y.shape[0]
-        return gd
+        dw = dot(x.T, (h - y)) / y.shape[0]
+        db = sum((h - y)) / y.shape[0]
+        return (dw, db)
