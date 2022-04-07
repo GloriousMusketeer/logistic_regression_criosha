@@ -14,9 +14,11 @@ class Sigmoid:
             el denominador no puede ser cero porque es 1+z. 
             """
             sig = exp(x) / (1 + exp(x))
+
         return sig
 
     def sigmoid(self, x):
         sig = array([self.sigmoid_function(value) for value in x])
+
         return sig
 

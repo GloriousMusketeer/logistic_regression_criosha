@@ -74,4 +74,5 @@ class logisticFunction:
                 y_pred[i] = 1
             else:
                 continue
+
         return y_pred

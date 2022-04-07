@@ -13,4 +13,5 @@ class gradientDescent:
     ) -> list[float]:
         dw = dot(x.T, (h - y)) / y.shape[0]
         db = sum((h - y)) / y.shape[0]
+
         return (dw, db)
