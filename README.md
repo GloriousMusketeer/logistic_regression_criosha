@@ -5,5 +5,5 @@
 #### Ando haciendo estas librerías con los datases de sklearn
 
 ## necesitamos los siguientes paquetes para que funke sino F:
-sklearn
-numpy
+. sklearn
+. numpy
