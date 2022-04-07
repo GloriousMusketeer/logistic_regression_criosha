@@ -7,3 +7,7 @@
 ## necesitamos los siguientes paquetes para que funke sino F:
 - sklearn
 - numpy
+
+## como hago correr esto ??? izzi:
+
+python main.py
