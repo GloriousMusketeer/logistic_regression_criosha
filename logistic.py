@@ -1,8 +1,8 @@
 from __future__ import annotations
 
-from lib.sigmoid import Sigmoid
-from lib.loss import Loss
 from lib.gradient_descent import gradientDescent
+from lib.loss import Loss
+from lib.sigmoid import Sigmoid
 
 from numpy import concatenate
 from numpy import dot
