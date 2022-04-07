@@ -40,12 +40,21 @@ class logisticFunction:
         lr: float,
         iterations: int,
     ) -> str:
+        # agregamos bias para la función z. 
+        # z = wx+b
+        bias = 0
+        # coloco en los for (_) por que no voy a necesitar la iteración.
+        # pero si voy a necesitar que que recorra toda las iteraciones
         for _ in range(iterations):
-            z = dot(x_t, weight)
+            z = dot(x_t, weight) + bias
             h = smd.sigmoid(z)
+            # lo mismo pasa con la salida de loss, no voy a usar la salida.
+            # pero si necesito que haga la función para entrenar
             _ = lss.get_loss(h, y_t)
-            dw = gd.get_gradient_descent(x_t, h, y_t)
+            (dw, db) = gd.get_gradient_descent(x_t, h, y_t)
             weight -= lr * dw
+            bias -= lr * db
+
         return print("proceso de ajustes sin problemas")
 
     def predict(
