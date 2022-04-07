@@ -30,7 +30,8 @@ class logisticFunction:
         umbral = 0.5
         self.fit(x_t, weight, y_t, lr, iterations)
         pred = self.predict(x, umbral, intercept, weight)
-        print((pred == y_t).mean())
+        print(pred)
+        # print((pred == y_t).mean())
 
     def fit(
         self,
@@ -54,7 +55,7 @@ class logisticFunction:
         umbral: float,
         intercept: list[list[float]],
         weight: list[float]
-    ) -> None:
+    ) -> list[float]:
         x_new = concatenate((intercept, x), axis=1)
         z = dot(x_new, weight)
         result = smd.sigmoid(z)
