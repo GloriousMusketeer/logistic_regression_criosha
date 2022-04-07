@@ -4,6 +4,7 @@ from lib.gradient_descent import gradientDescent
 from lib.loss import Loss
 from lib.sigmoid import Sigmoid
 
+from matplotlib import pyplot as plt
 from numpy import concatenate
 from numpy import dot
 from numpy import ones
@@ -20,17 +21,36 @@ weight: list[float] = []
 
 
 class logisticFunction:
-    def logistic(self, x: list[list[float]], y: list[int]) -> None:
+    def logistic(
+        self,
+        x: list[list[float]],
+        y: list[int],
+        xlabel: str,
+        ylabel: str,
+    ) -> None:
         intercept: list[list[float]] = ones((x.shape[0], 1))
         x_t: list[list[float]] = concatenate((intercept, x), axis=1)
+        (x_min, x_max) = x[:, 0].min() - 0.5, x[:, 0].max() + 0.5
         weight: list[float] = zeros(x_t.shape[1])
         y_t: list[int] = y
+        (y_min, y_max) = x[:, 1].min() - 0.5, x[:, 1].max() + 0.5
         lr = 0.01
         iterations = 10000
         umbral = 0.5
         self.fit(x_t, weight, y_t, lr, iterations)
         pred = self.predict(x, umbral, intercept, weight)
         print((pred == y_t).mean())
+        plt.figure(2, figsize=(8, 6))
+        plt.clf()
+        plt.scatter(x[:, 0], x[:, 1], c=y, cmap=plt.cm.Set1, edgecolor="k")
+        plt.xlabel(xlabel)
+        plt.ylabel(ylabel)
+        plt.xlim(x_min, x_max)
+        plt.ylim(y_min, y_max)
+        plt.xticks(())
+        plt.yticks(())
+        plt.tight_layout()
+        plt.show()
 
     def fit(
         self,
@@ -40,7 +60,7 @@ class logisticFunction:
         lr: float,
         iterations: int,
     ) -> str:
-        # agregamos bias para la función z. 
+        # agregamos bias para la función z.
         # z = wx+b
         bias = 0
         # coloco en los for (_) por que no voy a necesitar la iteración.
@@ -62,7 +82,7 @@ class logisticFunction:
         x: list[list[float]],
         umbral: float,
         intercept: list[list[float]],
-        weight: list[float]
+        weight: list[float],
     ) -> list[float]:
         x_new = concatenate((intercept, x), axis=1)
         z = dot(x_new, weight)
